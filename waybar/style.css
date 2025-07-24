@@ -1,3 +1,21 @@
+@define-color waybar-bg rgba(0, 0, 0, 0.0);
+@define-color waybar-fg #FFFFFF;
+
+/* Buildings.png */
+@define-color red #C6716F;
+@define-color navy #4C546C;
+@define-color grey #3C4454;
+@define-color yellow #E9CC90;
+@define-color pink #B48CAC;
+@define-color blue #5C84AC;
+@define-color light-blue #85A7C3;
+
+@define-color workspaces-color rgba(0, 0, 0, 0.0);
+@define-color workspaces-hover-bg rgba(0, 0, 0, 0.2);
+@define-color workspaces-hover-fg #FFFFFF;
+@define-color workspaces-active-bg rgba(0, 0, 0, 0.5);
+@define-color workspaces-active-fg #FFFFFF;
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
@@ -5,9 +23,8 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.2);
-/*     border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: #ffffff;
+    background-color: @waybar-bg;
+    color: @waybar-fg;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -15,15 +32,6 @@ window#waybar {
 window#waybar.hidden {
     opacity: 0.2;
 }
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
 window#waybar.termite {
     background-color: #3F3F3F;
@@ -48,38 +56,28 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
-
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
+    padding: 0 10px;
+    background-color: @workspaces-color;
     color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
+    background-color: @workspaces-hover-bg;
+    box-shadow: inset 0 2px #ffffff;
 
-#workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.active {
-    background-color: #000000;
+    background-color: @workspaces-active-bg;
+    color: @workspaces-active-fg;
+    box-shadow: inset 0 2px @red;
 }
 
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-
-#mode {
+/*#mode {
     background-color: #64727D;
     box-shadow: inset 0 -3px #ffffff;
-}
+}*/
 
 #clock,
 #battery,
@@ -101,6 +99,47 @@ button:hover {
 #workspaces {
     margin: 0 4px;
 }
+
+#window {
+    color: @red;
+    box-shadow: inset 0 2px @red;
+}
+
+#clock {
+    color: @yellow;
+    box-shadow: inset 0 2px @yellow;
+}
+
+#mpris {
+    color: @pink;
+    box-shadow: inset 0 2px @pink;
+}
+
+#pulseaudio {
+    color: @blue;
+    box-shadow: inset 0 2px @blue;
+}
+
+#cpu {
+    color: @red;
+    box-shadow: inset 0 2px @red;
+}
+
+#memory {
+    color: @red;
+    box-shadow: inset 0 2px @red;
+}
+
+#language {
+    color: @yellow;
+    box-shadow: inset 0 2px @yellow;
+}
+
+#tray {
+    color: @navy;
+    box-shadow: inset 0 2px @navy;
+}
+
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
